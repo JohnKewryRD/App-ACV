@@ -1,0 +1,317 @@
+/* Estilos generales para el modo oscuro */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    /* Fondo oscuro */
+    color: #e0e0e0;
+    /* Texto claro */
+    transition: background-color 0.3s, color 0.3s;
+    /* Transición suave */
+}
+
+#miTabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto; /* Habilitar scroll horizontal */
+}
+
+#miTabla th, #miTabla td {
+    padding: 10px;
+    text-align: center;
+}
+
+#miTabla th {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+#miTabla td {
+    border-bottom: 1px solid #333;
+}
+
+/* Ajustes para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    #miTabla {
+        font-size: 14px; /* Ajustar tamaño de fuente */
+    }
+    #miTabla th, #miTabla td {
+        padding: 5px; /* Reducir padding */
+    }
+    .table-container {
+        overflow-x: auto; /* Habilitar scroll horizontal */
+    }
+}
+
+/* Eliminar el resaltado azul en todos los elementos */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #1f1f1f;
+    /* Navbar oscuro */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    justify-content: space-between;
+    /* Mover el hamburger a la derecha */
+}
+
+.hamburger {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    /* Cambiado a margin-left */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #e0e0e0;
+    /* Color claro para el ícono de hamburguesa */
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.nav-title {
+    color: #e0e0e0;
+    /* Texto claro */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar {
+    position: fixed;
+    right: -250px;
+    top: 60px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background-color: #1f1f1f;
+    /* Fondo oscuro para el sidebar */
+    transition: 0.3s;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    /* Borde oscuro */
+}
+
+.sidebar ul li a {
+    color: #e0e0e0;
+    /* Texto claro */
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #333;
+    /* Fondo oscuro al hacer hover */
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Habilitar scroll horizontal */
+    overflow-y: hidden; /* Ocultar scroll vertical */
+    padding-top: 60px; /* Ajuste para evitar que la tabla se superponga con la navbar */
+}
+
+/* Estilos para el botón flotante */
+.btn-float {
+    position: fixed;
+    bottom: 40px;  /* Aumentado de 20px a 40px para subirlo */
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;  /* Cambiado de 50% a 5px para coincidir con los otros botones */
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 16px;  /* Añadido para mejor legibilidad */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  /* Añadido para dar profundidad */
+}
+
+.btn-float:hover {
+    background-color: #0056b3;  /* Añadido efecto hover */
+}
+/* Estilos para el contenedor del formulario */
+.formulario-container {
+    position: fixed;
+    top: 60px; /* Ajusta la posición superior para evitar que se superponga con la navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px); /* Ajusta la altura para que no sobrepase la pantalla */
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* Permite que se desplacen los contenidos si no caben */
+}
+
+.formulario {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Ajusta el ancho para que se adapte mejor a pantallas pequeñas */
+    max-width: 600px; /* Máximo ancho para pantallas grandes */
+    max-height: calc(100vh - 120px); /* Ajusta la altura máxima para que no sobrepase la pantalla */
+    overflow-y: auto; /* Permite que se desplacen los contenidos si no caben */
+}
+
+.formulario h2 {
+    margin-top: 0;
+}
+.campo-formulario:last-child {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.campo-formulario button[type="submit"],
+#cerrarFormulario {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;  /* Hace que ambos botones tomen el mismo espacio */
+}
+
+#cerrarFormulario {
+    background-color: #dc3545;
+}
+.campo-formulario label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.campo-formulario input, .campo-formulario select, .campo-formulario textarea {
+    width: 96%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.campo-formulario textarea {
+    height: 25px; /* Ajusta la altura del textarea */
+    resize: vertical;
+}
+.campo-formulario button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.radio-label {
+    margin-right: 15px;
+    min-width: 100px;
+}
+.radio-inline {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.radio-inline input[type="radio"] {
+    margin: 0;
+    margin-right: 5px;
+}
+.radio-inline label {
+    margin: 0;
+    cursor: pointer;
+}
+.radio-inline label {
+    margin-right: 0; /* Elimina el espacio entre el radiobutton y su label */
+}
+/* Ajustes para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    .formulario {
+        width: 85%;  /* Reducido de 95% a 85% */
+        padding: 15px;
+        margin: 10px;
+    }
+    .campo-formulario {
+        margin-bottom: 10px;
+    }
+    .campo-formulario input,
+    .campo-formulario select,
+    .campo-formulario textarea {
+        width: 95%;  /* Ajustado para dar un poco más de margen */
+    }
+
+    .formulario-container{
+        margin-top: -10px;
+        
+    }
+}
+
+/* Estilos para el botón de eliminar */
+.btn-eliminar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c0392b;
+}
+
+/* Ajustes para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    .btn-eliminar {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}

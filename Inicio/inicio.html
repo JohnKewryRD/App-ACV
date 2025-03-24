@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="icon" href="../icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../Inicio/inicio.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-title">ALMACENES CRISTO VIENE</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="../Inicio/inicio.html">INICIO</a></li>
+            <li><a href="https://www.appsheet.com/start/85181df8-5f04-4716-a5f1-1c23b34dacc2">INVENTARIO</a></li>
+            <li><a href="../InformeRecepcion/inforecepcion.html">INFORME DE RECEPCIÓN</a></li>
+            <li><a href="https://www.appsheet.com/start/860d9d7e-6638-4f67-804b-2f9c40b85ba0">FECHAS PRÓXIMAS</a></li>
+            <li><a href="https://www.appsheet.com/start/a52bd35a-b546-4bf9-9a28-7c522530af2b">AVERÍAS</a></li>
+            <li><a href="../index.html">CERRAR SESIÓN</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="button-container">
+            <button class="btn"
+                onclick=window.location.href='https://www.appsheet.com/start/85181df8-5f04-4716-a5f1-1c23b34dacc2'>
+                <div>
+                    <img src="../Inicio/inventario.png" alt="inventario">
+                </div>INVENTARIO
+            </button>
+            <button class="btn" onclick="location.href='../InformeRecepcion/inforecepcion.html'">
+                <div>
+                    <img src="../Inicio/informe de recepcion.png" alt="inventario">
+                </div>
+                INFORME DE RECEPCIÓN
+            </button>
+            <button class="btn" class="btn"
+                onclick=window.location.href='https://www.appsheet.com/start/860d9d7e-6638-4f67-804b-2f9c40b85ba0'>
+                <div>
+                    <img src="../Inicio/fechas proximas.png" alt="inventario">
+                </div>
+                FECHAS PRÓXIMAS
+            </button>
+            <button class="btn" class="btn"
+                onclick=window.location.href='https://www.appsheet.com/start/a52bd35a-b546-4bf9-9a28-7c522530af2b'>
+                <div>
+                    <img src="../Inicio/averias.png" alt="inventario">
+                </div>
+                AVERÍAS
+            </button>
+        </div>
+    </div>
+    <script src="../auth.js"></script>
+    <script src="../Inicio/inicio.js"></script>
+    <script>
+        // Check authentication when page loads
+        if (!checkAuth()) {
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>

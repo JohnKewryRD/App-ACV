@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe De Recepción</title>
+    <link rel="icon" href="../icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./inforecepcion.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-title">INFORME DE RECEPCIÓN</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="../Inicio/inicio.html">INICIO</a></li>
+            <li><a href="https://www.appsheet.com/start/85181df8-5f04-4716-a5f1-1c23b34dacc2">INVENTARIO</a></li>
+            <li><a href="./inforecepcion.html">INFORME DE RECEPCIÓN</a></li>
+            <li><a href="https://www.appsheet.com/start/860d9d7e-6638-4f67-804b-2f9c40b85ba0">FECHAS PRÓXIMAS</a></li>
+            <li><a href="https://www.appsheet.com/start/a52bd35a-b546-4bf9-9a28-7c522530af2b">AVERÍAS</a></li>
+            <li><a href="../index.html">CERRAR SESIÓN</a></li>
+        </ul>
+    </div>
+
+    <div class="table-container">
+        <table id="miTabla">
+            <thead>
+                <tr>
+                    <th>USUARIO</th>
+                    <th>FECHA</th>
+                    <th>HORA</th>
+                    <th>COMPAÑÍA</th>
+                    <th>CANTIDAD DE BULTOS</th>
+                    <th>AGENDADO</th>
+                    <th>CON ORDEN</th>
+                    <th>MUESTREO</th>
+                    <th>COMENTARIOS</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Botón flotante -->
+    <button id="btnAgregar" class="btn-float">Agregar Registro</button>
+
+    <!-- Contenedor del formulario -->
+    <div id="formulario-container" class="formulario-container">
+        <div class="formulario">
+            <h2>Agregar Registro</h2>
+            <form id="formulario">
+                <div class="campo-formulario">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="compania">Compañía:</label>
+                    <input type="text" id="compania" name="compania" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="cantidadBultos">Cantidad de Bultos:</label>
+                    <input type="number" id="cantidadBultos" name="cantidadBultos" required>
+                </div>
+                <div class="campo-formulario radio-group">
+                    <label for="agendado" class="radio-label">Agendado:</label>
+                    <div class="radio-inline">
+                        <input type="radio" id="agendadoSi" name="agendado" value="Sí" required>
+                        <label for="agendadoSi">Sí</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" id="agendadoNo" name="agendado" value="No">
+                        <label for="agendadoNo">No</label>
+                    </div>
+                </div>
+                <div class="campo-formulario radio-group">
+                    <label for="conOrden" class="radio-label">Con Orden:</label>
+                    <div class="radio-inline">
+                        <input type="radio" id="conOrdenSi" name="conOrden" value="Sí" required>
+                        <label for="conOrdenSi">Sí</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" id="conOrdenNo" name="conOrden" value="No">
+                        <label for="conOrdenNo">No</label>
+                    </div>
+                </div>
+                <div class="campo-formulario radio-group">
+                    <label for="muestreo" class="radio-label">Muestreo:</label>
+                    <div class="radio-inline">
+                        <input type="radio" id="muestreoSi" name="muestreo" value="Sí" required>
+                        <label for="muestreoSi">Sí</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" id="muestreoNo" name="muestreo" value="No">
+                        <label for="muestreoNo">No</label>
+                    </div>
+                </div>
+                <div class="campo-formulario">
+                    <label for="comentarios">Comentarios:</label>
+                    <textarea id="comentarios" name="comentarios"></textarea>
+                </div>
+                <div class="campo-formulario">
+                    <button id="cerrarFormulario">Cerrar</button>
+                    <button type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../auth.js"></script>
+    <script src="./inforecepcion.js"></script>
+    <script>
+        // Check authentication when page loads
+        if (!checkAuth()) {
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+
+</html>

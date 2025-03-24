@@ -1,0 +1,107 @@
+/* Estilos generales para el modo oscuro */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: #1e1e1e; /* Fondo del contenedor oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ffffff; /* Título en blanco */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #b0b0b0; /* Color de texto más suave */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333; /* Borde más oscuro */
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #2d2d2d; /* Fondo del input oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+input:focus {
+    border-color: #007bff; /* Resaltar el borde al enfocar */
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff; /* Botón azul */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Botón azul más oscuro al pasar el mouse */
+}
+
+#mensaje {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.login-logo {
+    max-width: 125px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 720px) {
+    body {
+        height: 60vh; /* Ajusta este valor según sea necesario */
+        padding-top: 50px; /* Agrega padding superior */
+
+    }
+}

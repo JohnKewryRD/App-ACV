@@ -1,0 +1,109 @@
+// INSTRUCCIONES PARA MODIFICAR EL SCRIPT DE GOOGLE APPS SCRIPT
+
+// Reemplaza tu código actual en Google Apps Script con el siguiente código:
+
+function doGet(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  data.shift(); // Elimina encabezados
+  return ContentService.createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    
+    // Verificar la acción a realizar
+    if (!data.accion || data.accion === 'agregar') {
+      // Agregar un nuevo registro (mantiene compatibilidad con código anterior)
+      
+      // Formatear la hora para guardarla con AM/PM y evitar conversiones automáticas
+      var hora = data.hora;
+      // Si la hora ya viene con formato AM/PM, usarla directamente
+      if (!hora.includes('AM') && !hora.includes('PM')) {
+        // Convertir de formato 24h a 12h con AM/PM
+        var horaPartes = hora.split(':');
+        var horas = parseInt(horaPartes[0]);
+        var minutos = horaPartes[1];
+        var periodo = horas >= 12 ? 'PM' : 'AM';
+        horas = horas % 12 || 12; // Convertir a formato 12 horas
+        hora = horas + ':' + minutos + ' ' + periodo;
+      }
+      
+      // Crear el rango para la nueva fila y establecer los valores
+      var lastRow = sheet.getLastRow() + 1;
+      var range = sheet.getRange(lastRow, 1, 1, 9);
+      
+      // Crear un array con los datos
+      var rowData = [
+        data.usuario,
+        data.fecha,
+        hora, // Guardar la hora con formato AM/PM
+        data.compania,
+        data.cantidadBultos,
+        data.agendado,
+        data.conOrden,
+        data.muestreo,
+        data.comentarios
+      ];
+      
+      // Establecer los valores en la hoja
+      range.setValues([rowData]);
+      
+      // Forzar que la celda de hora se formatee como texto
+      sheet.getRange(lastRow, 3).setNumberFormat('@');
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "success",
+        message: "Registro agregado correctamente",
+        data: rowData
+      })).setMimeType(ContentService.MimeType.JSON);
+    } 
+    else if (data.accion === 'eliminar') {
+      // Eliminar un registro existente
+      var rowIndex = parseInt(data.rowIndex);
+      // Sumar 2 porque: +1 por ser 0-based y +1 por los encabezados que se eliminan en doGet
+      sheet.deleteRow(rowIndex + 2);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "success",
+        message: "Registro eliminado correctamente"
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // Si la acción no es reconocida
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: "Acción no reconocida"
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// PASOS PARA IMPLEMENTAR:
+// 1. Abre tu proyecto de Google Apps Script asociado a tu hoja de cálculo
+// 2. Reemplaza todo el código existente con el código anterior
+// 3. Guarda el script (Ctrl+S o Cmd+S)
+// 4. Implementa una nueva versión (Haz clic en "Implementar" > "Nueva implementación")
+// 5. Selecciona "Web app" como tipo de implementación
+// 6. Configura el acceso según tus necesidades (normalmente "Cualquier persona" para acceso público)
+// 7. Haz clic en "Implementar"
+// 8. Copia la URL de la Web App que se te proporciona
+// 9. Asegúrate de que la URL en tu archivo inforecepcion.js coincida con la URL de tu implementación
+
+// NOTA: Si ya tienes una implementación existente, puedes usar "Implementar" > "Administrar implementaciones" 
+// y luego "Editar" para actualizar la implementación existente en lugar de crear una nueva.
+
+// NOTA SOBRE LA HORA:
+// Este script ahora convierte la hora al formato 12h con AM/PM antes de guardarla.
+// Además, fuerza que la celda de hora se formatee como texto usando setNumberFormat('@').
+// Esto evita que Google Sheets intente interpretar la hora como un objeto Date. 

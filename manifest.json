@@ -1,0 +1,21 @@
+{
+    "name": "App ACV 03",
+    "short_name": "APP-ACV",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#121212",
+    "theme_color": "#007bff",
+    "description": "Aplicación realizada por John Reyes para Almacenes Cristo Viene",
+    "icons": [
+        {
+            "src": "./imagen2.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "./imagen2.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}

@@ -1,0 +1,139 @@
+/* Estilos generales para el modo oscuro */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+/* Eliminar el resaltado azul en todos los elementos */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #1f1f1f; /* Navbar oscuro */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    justify-content: space-between; /* Mover el hamburger a la derecha */
+}
+
+.hamburger {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px; /* Cambiado a margin-left */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #e0e0e0; /* Color claro para el ícono de hamburguesa */
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.nav-title {
+    color: #e0e0e0; /* Texto claro */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar {
+    position: fixed;
+    right: -250px;
+    top: 60px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background-color: #1f1f1f; /* Fondo oscuro para el sidebar */
+    transition: 0.3s;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333; /* Borde oscuro */
+}
+
+.sidebar ul li a {
+    color: #e0e0e0; /* Texto claro */
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #333; /* Fondo oscuro al hacer hover */
+}
+
+.container {
+    margin-top: 80px;
+    text-align: center;
+    padding: 20px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 20px 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff; /* Fondo oscuro para botones */
+    color: #e0e0e0; /* Texto claro */
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Fondo más claro al hacer hover */
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
